@@ -1,77 +1,86 @@
-<html>
-	<style>
-		body {
-			background: 		black;
-			margin-left: 		20;
-			color:			#0073e6;
-			font-family:		sans-serif;
-		}
-		table {
-			border-collapse:	collapse;
-		}
-		td {
-			border-style:		solid none solid none;
-			border-width:		2 0 2 0;
-			border-color:		#0073e6;
-			font-size:		2em;
-		}
-		td.audio {
-			text-align:		right;
-		}
-		.email {
-			color:			#0073e6;
-			font-family:		sans-serif;
-			font-size:		2em;
-		}
-	</style>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+</script>
 
-	<head>
-		<title>
-			Tired Souls: A Band in Glasgow, UK
-		</title>
-	</head>
+<style>
+  body {
+    background: 		  black;
+    color:            #ff0066;
+    font-family:		  "Poiret One", sans-serif;
+    font-weight:		  bold;
+  }
+  table {
+    border-collapse:	collapse;
+  }
+  td {
+    border-style:     none;
+    font-size:        1em;
+    font-weight:      bold;
+  }
+  .email {
+    color:			      #ff0066;
+    font-family:		  "Poiret One", sans-serif;
+    font-size:		    1em;
+    font-weight:		  bold;
+  }
+</style>
 
-	<body>
-		<div
-			style="	margin-left:	20;
-				margin-top:	20;
-				margin-right:	20;
-				">
-			<div
-   				style="	margin-bottom:	20">
-				<img
-					class="title_img"
-					src="20915476_353319811756354_4246640056035859679_n.jpg"
-					style="	display:	block;
-						width:		100%;
-						align:		right;
-						"
-					alt="Tired Souls band image">
-			</div>
-			<div
-   				style="	margin-bottom:	20;
-					width:		100%">
-				<div
-					style="width:	100%">
-					<table
-						style="	width:	100%">
-						<tr
-							style="	width:	100%">
-							<td>Stems (rehearsal)</td>
-							<td class="audio"><audio src="tired-souls-stems.mp3" controls></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div
-				style="	margin-bottom:	20;
-					margin-top:	50">
-				<a
-					class="email"
-					href="mailto:info@tiredsouls.com">
-					contact
-				</a>
-			</div>
-		</div>
-	</body>
-</html>
+<link
+  href="https://fonts.googleapis.com/css?family=Poiret+One"
+  rel="stylesheet">
+
+<div id="app">
+  <h1>{{ title }}</h1>
+  <div height="50%">
+    <img
+      height="400px"
+      src="box-june-2018.jpg"
+      alt="Tired Souls band image">
+  </div>
+  <div height="50%">
+    <div>
+      <table>
+        <tr><td><h1>Gigs</h1></td><td></td></tr>
+        <tr v-for="gig in gigs">
+          <td>{{ gig.location}}</td>
+          <td>{{ gig.date }}</td>
+        </tr>
+        <tr><td><h1>Sounds</h1></td><td></td></tr>
+        <tr v-for="track in tracks">
+          <td>{{ track.title }}</td>
+          <td class="audio"><audio v-bind:src="track.file" controls></td>
+        </tr>
+      </table>
+    </div>
+    <a
+      class="email"
+      href="mailto:info@tiredsouls.com">
+      Contact Us
+    </a>
+  </div>
+</div>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      title: 'Tired Souls: a band in glasgow, uk',
+      tracks: [
+        {
+          'title':  'Stems (rehearsal)',
+          'file':   'tired-souls-stems.mp3'
+        },
+        {
+          'title':  'Forever (Shelter 2017)',
+          'file':   'tired-souls-forever.mp3'
+        }
+      ],
+      gigs: [
+        {
+          'date':   'June 6th 2018',
+          'location': 'BOX GLASGOW',
+        }
+      ]
+    }
+  })
+</script>
+
