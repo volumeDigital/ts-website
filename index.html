@@ -29,11 +29,12 @@
   rel="stylesheet">
 
 <div id="app">
+  <title>{{ title }}</title>
   <h1>{{ title }}</h1>
   <div height="50%">
     <img
       height="400px"
-      src="box-june-2018.jpg"
+      src="img/box-june-2018.jpg"
       alt="Tired Souls band image">
   </div>
   <div height="50%">
@@ -63,15 +64,15 @@
   var app = new Vue({
     el: "#app",
     data: {
-      title: 'Tired Souls: a band in glasgow, uk',
+      title: 'Tired Souls: A Band in Glasgow, UK',
       tracks: [
         {
           'title':  'Stems (rehearsal)',
-          'file':   'tired-souls-stems.mp3'
+          'file':   'audio/tired-souls-stems.mp3'
         },
         {
           'title':  'Forever (Shelter 2017)',
-          'file':   'tired-souls-forever.mp3'
+          'file':   'audio/tired-souls-forever.mp3'
         }
       ],
       gigs: [
